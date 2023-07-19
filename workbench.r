@@ -32,14 +32,36 @@ head(all_trips_reduced)
 unique(all_trips_reduced$member_casual)
 
 # Adding additional columns with relevant information regarding the date and trip duration
-all_trips_reduced$ride_length <- c(all_trips$ended_at - all_trips$started_at)
-all_trips_reduced$ride_length <- as.numeric(all_trips$ride_length)
-all_trips_reduced$day_of_week <- c(wday(all_trips$started_at, label = TRUE, week_start = 1, abbr = FALSE))
+all_trips_reduced$ride_length <- c(all_trips_reduced$ended_at - all_trips$started_at)
+all_trips_reduced$ride_length <- as.numeric(all_trips_reduced$ride_length)
+all_trips_reduced$day_of_week <- c(wday(all_trips_reduced$started_at, label = TRUE, week_start = 1, abbr = FALSE))
 
-# Initial data cleaning and verification
+# Data cleaning and verification
 all_trips_reduced <- all_trips_reduced %>% filter(ride_length > 60)
 all_trips_reduced <- all_trips_reduced %>% filter(!ride_length > 86400)
 all_trips_reduced <- unique(all_trips_reduced)
 all_trips_v2 <- all_trips_reduced %>% drop_na(start_station_name) %>% drop_na(end_station_name)
 
+# Descriptive analysis
 
+# Checking information about length of the rides
+summary(all_trips_v2$ride_length)
+
+# Comparing the ride lengths between members and casual users
+
+aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = mean)
+aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = median)
+aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = max)
+aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = min)
+
+# Comparing the ride lengths by each day between members and casual users 
+
+aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual + all_trips_v2$day_of_week, FUN = mean)
+
+# Comparing the number of rides by each day between members and casual users
+
+aggregate(all_trips_v2$ride_id ~ all_trips_v2$member_casual + all_trips_v2$day_of_week, FUN = length)
+
+# Comparing the number of rides by the vehicle type between members and casual users
+
+aggregate(all_trips_v2$ride_id ~ all_trips_v2$member_casual + all_trips_v2$rideable_type, FUN = length)
