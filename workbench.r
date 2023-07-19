@@ -37,7 +37,7 @@ all_trips_reduced$ride_length <- as.numeric(all_trips$ride_length)
 all_trips_reduced$day_of_week <- c(wday(all_trips$started_at, label = TRUE, week_start = 1, abbr = FALSE))
 
 # Initial data cleaning and verification
-all_trips_reduced <- all_trips_reduced %>% filter(ride_length > 0)
+all_trips_reduced <- all_trips_reduced %>% filter(ride_length > 60)
 all_trips_reduced <- all_trips_reduced %>% filter(!ride_length > 86400)
 all_trips_reduced <- unique(all_trips_reduced)
 all_trips_v2 <- all_trips_reduced %>% drop_na(start_station_name) %>% drop_na(end_station_name)
