@@ -24,23 +24,22 @@ all_trips <- df_list %>% reduce(left_join, by=colnames(june2022))
 
 # Removing irrelevant columns from the data frame
 colnames(all_trips)
-all_trips <- all_trips %>% select(-c(start_lat,start_lng,end_lat,end_lng))
+all_trips_reduced <- all_trips %>% select(-c(start_lat,start_lng,end_lat,end_lng))
 
 # Data frame inspection
-str(all_trips)
-head(all_trips)
-unique(all_trips$member_casual)
+str(all_trips_reduced)
+head(all_trips_reduced)
+unique(all_trips_reduced$member_casual)
 
 # Adding additional columns with relevant information regarding the date and trip duration
-all_trips$ride_length <- c(all_trips$ended_at - all_trips$started_at)
-all_trips$ride_length <- as.numeric(all_trips$ride_length)
-
-all_trips$day_of_week <- c(wday(all_trips$started_at))
+all_trips_reduced$ride_length <- c(all_trips$ended_at - all_trips$started_at)
+all_trips_reduced$ride_length <- as.numeric(all_trips$ride_length)
+all_trips_reduced$day_of_week <- c(wday(all_trips$started_at, label = TRUE, week_start = 1, abbr = FALSE))
 
 # Initial data cleaning and verification
-all_trips <- all_trips %>% filter(ride_length > 0)
-all_trips <- all_trips %>% filter(!ride_length > 86400)
-all_trips <- unique(all_trips)
-all_trips_v2 <- all_trips %>% drop_na(start_station_name) %>% drop_na(end_station_name)
+all_trips_reduced <- all_trips_reduced %>% filter(ride_length > 0)
+all_trips_reduced <- all_trips_reduced %>% filter(!ride_length > 86400)
+all_trips_reduced <- unique(all_trips_reduced)
+all_trips_v2 <- all_trips_reduced %>% drop_na(start_station_name) %>% drop_na(end_station_name)
 
-write.csv(all_trips_v2, "C:\\Users\\Tomek\\Documents\\data_analysis\\bike_data\\data.csv")
+
