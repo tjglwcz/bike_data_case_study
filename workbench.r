@@ -18,8 +18,7 @@ april2023 <- read_csv("csv/202304-divvy-tripdata.csv")
 may2023 <- read_csv("csv/202305-divvy-tripdata.csv")
 
 # Aggregating all data into single data frame
-df_list <- list(june2022,july2022,august2022,september2022,october2022,november2022,december2022,january2023,february2023,march2023,april2023,may2023)
-all_trips <- bind_rows(df_list)
+all_trips <- bind_rows(list(june2022,july2022,august2022,september2022,october2022,november2022,december2022,january2023,february2023,march2023,april2023,may2023))
 
 #Checking if aggregated data frame includes all 12 months  
 min(all_trips$started_at)
@@ -42,29 +41,33 @@ all_trips_reduced$day_of_week <- c(wday(all_trips_reduced$started_at, label = TR
 # Data cleaning and verification
 all_trips_reduced <- all_trips_reduced %>% filter(ride_length > 60)
 all_trips_reduced <- all_trips_reduced %>% filter(!ride_length > 86400)
+all_trips_reduced <- all_trips_reduced %>% drop_na(ride_id)
 all_trips_reduced <- unique(all_trips_reduced)
-all_trips_v2 <- all_trips_reduced %>% drop_na(start_station_name) %>% drop_na(end_station_name)
 
 # Descriptive analysis
 
 # Checking information about length of the rides
-summary(all_trips_v2$ride_length)
+summary(all_trips_reduced$ride_length)
 
 # Comparing the ride lengths between members and casual users
 
-aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = mean)
-aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = median)
-aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = max)
-aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual, FUN = min)
+aggregate(all_trips_reduced$ride_length ~ all_trips_reduced$member_casual, FUN = mean)
+aggregate(all_trips_reduced$ride_length ~ all_trips_reduced$member_casual, FUN = median)
+aggregate(all_trips_reduced$ride_length ~ all_trips_reduced$member_casual, FUN = max)
+aggregate(all_trips_reduced$ride_length ~ all_trips_reduced$member_casual, FUN = min)
 
 # Comparing the ride lengths by each day between members and casual users 
 
-aggregate(all_trips_v2$ride_length ~ all_trips_v2$member_casual + all_trips_v2$day_of_week, FUN = mean)
+aggregate(all_trips_reduced$ride_length ~ all_trips_reduced$member_casual + all_trips_reduced$day_of_week, FUN = mean)
 
 # Comparing the number of rides by each day between members and casual users
 
-aggregate(all_trips_v2$ride_id ~ all_trips_v2$member_casual + all_trips_v2$day_of_week, FUN = length)
+aggregate(all_trips_reduced$ride_id ~ all_trips_reduced$member_casual + all_trips_reduced$day_of_week, FUN = length)
 
 # Comparing the number of rides by the vehicle type between members and casual users
 
-aggregate(all_trips_v2$ride_id ~ all_trips_v2$member_casual + all_trips_v2$rideable_type, FUN = length)
+aggregate(all_trips_reduced$ride_id ~ all_trips_reduced$member_casual + all_trips_reduced$rideable_type, FUN = length)
+
+# Saving a clean CSV file for further visualization using Tableau
+
+write.csv(all_trips_reduced, file = 'bike_sharing_data_clean.csv', row.names = FALSE)
