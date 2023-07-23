@@ -17,10 +17,13 @@ march2023 <- read_csv("csv/202303-divvy-tripdata.csv")
 april2023 <- read_csv("csv/202304-divvy-tripdata.csv")
 may2023 <- read_csv("csv/202305-divvy-tripdata.csv")
 
-
 # Aggregating all data into single data frame
-df_list = list(june2022,july2022,august2022,september2022,october2022,november2022,december2022,january2023,february2023,march2023,april2023,may2023)
-all_trips <- df_list %>% reduce(left_join, by=colnames(june2022))
+df_list <- list(june2022,july2022,august2022,september2022,october2022,november2022,december2022,january2023,february2023,march2023,april2023,may2023)
+all_trips <- bind_rows(df_list)
+
+#Checking if aggregated data frame includes all 12 months  
+min(all_trips$started_at)
+max(all_trips$started_at)
 
 # Removing irrelevant columns from the data frame
 colnames(all_trips)
