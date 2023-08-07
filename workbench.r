@@ -32,6 +32,7 @@ all_trips_reduced <- all_trips %>% select(-c(start_lat,start_lng,end_lat,end_lng
 str(all_trips_reduced)
 head(all_trips_reduced)
 unique(all_trips_reduced$member_casual)
+unique(all_trips_reduced$rideable_type)
 
 # Adding additional columns with relevant information regarding the date and trip duration
 all_trips_reduced$ride_length <- c(all_trips_reduced$ended_at - all_trips$started_at)
