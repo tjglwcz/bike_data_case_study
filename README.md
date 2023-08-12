@@ -25,3 +25,16 @@ do that, however, the marketing analyst team needs to better understand how annu
 casual riders would buy a membership, and how digital media could aﬀect their marketing tactics.
 
 ## Business task
+
+The business is to determine the differences in service usage between casual users and members, and to find a way to encourage the casual users to subscribe to the service.
+
+## About the data
+
+The data used in this project consist of 12 months of Cyclistic trip data downloaded from [here](https://divvy-tripdata.s3.amazonaws.com/index.html). The data has been made available by Motivate International Inc. The datasets were stored in the original form, divided by month.
+
+## Data cleaning
+
+The data cleaning process was fully done using R, with the code available [here](https://github.com/tjglwcz/bike_data_case_study/blob/master/workbench.r).
+The whole process consisted of: aggregating all downloaded files into a single data frame, data verification, removing invalid and duplicate data, creating helper columns, such as defining the day of the week for every ride and calculating the ride length. After data cleaning, I have conducted a quick descriptive analysis, before exporting the CSV file for further visualization using Tableau.
+
+## Analysis and visualization
