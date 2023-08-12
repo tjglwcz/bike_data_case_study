@@ -2,8 +2,8 @@
 
 ## Introduction
 
-This project was made as a part of an optional Capstone Project in the Google Data Analytics Professional Certificate on Coursera.
-I took the role of a junior data analyst working in the marketing analyst team at **Cyclistic**, a bike sharing company from Chicago. My main task was to understand how casual riders and annual members use Cyclistic bikes differently. The insights are going to be the base for a new marketing strategy to convert casual riders into annual members. I used R for data cleaning, and visualized my findings using Tableau.
+This project was completed as part of an optional capstone project for the Google Data Analytics Professional Certificate on Coursera.
+I took on the role of a junior data analyst working in the marketing analytics team at **Cyclistic**, a bike-sharing company based in Chicago. My main task was to understand how casual riders and annual members use Cyclistic's bikes differently. The insights would form the basis of a new marketing strategy to convert casual riders into annual members. I used R to clean the data and Tableau to visualise my findings.
 
 ## About the company
 
@@ -26,48 +26,48 @@ casual riders would buy a membership, and how digital media could aﬀect their 
 
 ## Business task
 
-The business is to determine the differences in service usage between casual users and members, and to find a way to encourage the casual users to subscribe to the service.
+The business task is to identify the differences in service usage between casual users and members, and to find a way to encourage casual users to subscribe to the service.
 
 ## About the data
 
-The data used in this project consist of 12 months of Cyclistic trip data downloaded from [here](https://divvy-tripdata.s3.amazonaws.com/index.html). The data has been made available by Motivate International Inc. The datasets were stored in the original form, divided by month.
+The data used in this project consists of 12 months of cycling trip data downloaded from [here](https://divvy-tripdata.s3.amazonaws.com/index.html). The data was provided by Motivate International Inc. The datasets have been saved in their original form, broken down by month.
 
 ## Data cleaning
 
-The data cleaning process was fully done using R, with the code available [here](https://github.com/tjglwcz/bike_data_case_study/blob/master/workbench.r).
-The whole process consisted of: aggregating all downloaded files into a single data frame, data verification, removing invalid and duplicate data, creating helper columns, such as defining the day of the week for every ride and calculating the ride length. After data cleaning, I have conducted a quick descriptive analysis, before exporting the CSV file for further visualization using Tableau.
+The data cleaning process was done entirely in R, with code available [here](https://github.com/tjglwcz/bike_data_case_study/blob/master/workbench.r).
+The whole process consisted of: merging all downloaded files into a single data frame, data verification, removing invalid and duplicate data, creating helper columns such as defining the day of the week for each trip and calculating the trip length. After cleaning the data, I did a quick descriptive analysis before exporting the CSV file for further visualisation using Tableau.
 
-## Analysis and visualization
+## Analysis and visualisation
 
-First, I have decided to see how does the average ride length differ between members and casual users.
+First, I decided to see how the average ride length differed between members and casual users.
 
 ![Average Ride Time by User Type: 21 minutes for casual users vs. 12 minutes for members](/img/Average%20Ride%20Time%20by%20User%20Type.png)
 
-As the graph presents, casual users on average spend almost ten minutes longer on a singular ride comparing to members. 
+As the graph shows, casual users spend on average almost ten minutes longer on a single ride than members. 
 
-Next, I wanted to see any fluctuations in the average ride time between the months of the year.
+Next, I wanted to see if there was any fluctuation in average ride time between the months of the year.
 
 ![Average Ride Time by Month: visible rise in Spring and Summer for both user categories](/img/Average%20Ride%20Time%20by%20Month.png)
 
-Based on the graph, both user types take longer rides starting from March, and the trend does not change until July. The change in ride lenghts is not as significant for members, as it is for casual users.
+The graph shows that both types of users take longer rides from March onwards. The trend does not change until July. The change in trip length is not as significant for members as it is for casual users.
 
-The ride length data shows us that members tend to choose shorter ride for the entire year, averaging in 12 minutes per trip. Casual users rent the bikes for trips longer by 5 - 10 minutes comparing to members.
+The ride length data shows that members tend to take shorter rides throughout the year, averaging 12 minutes per ride. Casual users rent the bikes for 5-10 minutes longer than members.
 
-After analyzing the ride length data, I compared the use patterns based on the number of rentals in certain time frames. First, the ride distribution based on the month:
+After analysing the ride length data, I compared the usage patterns based on the number of rentals in certain time frames. First, the distribution of trips by month:
 
 ![Number of Rides by Month](/img/Number%20of%20Rides%20by%20Month.png)
 
-The service is visibly more popular among the members comparing to casual users during Autumn and Winter. However, casual users rent almost as much bikes as members during the Summer months. Overall, there is a visible patter for members to use the service all year round, where the casual users tend to rent bikes mostly during warmer months. In addition, taking the longer ride times for casual users into consideration, it is possible to assume that casual users tend to use rented bikes as a form of past-time activity, where the usage patterns for members imply a more balanced, utilitarian approach for rental bikes.
+The service is clearly more popular among members than casual users during autumn and winter. However, casual users rent almost as many bikes as members during the summer months. Overall, there is a visible pattern of members using the service all year round, with casual users more likely to rent bikes during the warmer months. Furthermore, taking into account the longer ride times for casual users, it can be assumed that casual users tend to use rental bikes as a form of leisure activity, whereas the usage patterns for members suggest a more balanced, utilitarian approach to rental bikes.
 
-To further analyze the usage patterns, I have compared the number of rides based on the day of the week and hour:
+To further analyse the usage patterns, I compared the number of rides per day of the week and per hour:
 
 ![Number of Rides by Day of the week](/img/Number%20of%20Rides%20by%20Day%20of%20the%20week.png)
 ![Number of Rides by Hour](/img/Number%20of%20Rides%20by%20Hour.png)
 
-As presented on the graphs, members use the service the most during the work week with two significant peaks in usage around 8 AM and 5 PM, which indicates popularity of the service among workers as a part of daily commute to and from work. Casual users tend to use rental bikes the most during the weekend (their usage even surpasses member's on Saturday), with one peak at 5 PM, which also further confirms the assumption of casual users renting the bikes for leisure purposes.
+As shown in the graphs, members use the service most during the working week, with two significant peaks in usage at 8am and 5pm, suggesting that the service is popular with workers as part of their daily commute. Casual users tend to use rental bikes most during the weekend (their usage even exceeds that of members on Saturday), with a peak at 5pm, which also supports the assumption that casual users rent the bikes for leisure purposes.
 
 ## Conclusion and recommendations
 
-The ride data presents two approaches to rental bikes between members and casual users. The casual users are most likely to rent a bike during summer in the afternoon, which indicates that their main use for rental bike is leisure oriented. However, their rent times tend to be longer comparing to members. Members are mostly renting the bikes for shorter trips, with main peaks in the morning and in the afternoon. Insights from the data suggest that this customer group uses rental bikes as a mean of transport to and from work. 
+The trip data show two approaches to rental bikes between members and casual users. Casual users are most likely to rent a bike in the afternoon during the summer, suggesting that their main use of a rental bike is leisure-oriented. However, their rental times tend to be longer than those of members. Members tend to rent bikes for shorter trips, with peaks in the mornings and afternoons. Insights from the data suggest that this customer group uses the rental bikes as a means of transport to and from work. 
 
-To maximize user conversions into annual members, the marketing team should conduct user research to confirm the assumptions about their rental bike usage patterns. The advertisements could focus on using the bikes as a daily commute to work, to create other use cases apart from leisure for the casual users. If there is an app used for bike rentals, it could also measure money spent on single ride or single day passes and compare the spending to the price of annual membership, to constantly notify the user if they annual pass is the more cost-friendly option for them.
+To maximise the conversion of casual users into annual members, the marketing team should conduct user research to confirm assumptions about their rental bike usage patterns. Advertising could focus on the use of the bikes as a daily commute to work in order to create use cases other than leisure for casual users. If there is a bike rental app, it could also measure the money spent on single rides or single day passes and compare the spend with the price of an annual membership to constantly inform the user if the annual pass is the more cost effective option for them.
