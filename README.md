@@ -64,4 +64,10 @@ To further analyze the usage patterns, I have compared the number of rides based
 ![Number of Rides by Day of the week](/img/Number%20of%20Rides%20by%20Day%20of%20the%20week.png)
 ![Number of Rides by Hour](/img/Number%20of%20Rides%20by%20Hour.png)
 
-As presented on the graphs, members use the service the most during the work week with two significant peaks in usage around 8 AM and 5 PM, which indicates the popularite of the service among workers as a part of daily commute to and from work. Casual users tend to use rental bikes the most during the weekend (their usage even surpasses member's on Saturday), with one peak at 5 PM, which also further confirms the assumption of casual users renting the bikes for leisure purposes.
+As presented on the graphs, members use the service the most during the work week with two significant peaks in usage around 8 AM and 5 PM, which indicates popularity of the service among workers as a part of daily commute to and from work. Casual users tend to use rental bikes the most during the weekend (their usage even surpasses member's on Saturday), with one peak at 5 PM, which also further confirms the assumption of casual users renting the bikes for leisure purposes.
+
+## Conclusion and recommendations
+
+The ride data presents two approaches to rental bikes between members and casual users. The casual users are most likely to rent a bike during summer in the afternoon, which indicates that their main use for rental bike is leisure oriented. However, their rent times tend to be longer comparing to members. Members are mostly renting the bikes for shorter trips, with main peaks in the morning and in the afternoon. Insights from the data suggest that this customer group uses rental bikes as a mean of transport to and from work. 
+
+To maximize user conversions into annual members, the marketing team should conduct user research to confirm the assumptions about their rental bike usage patterns. The advertisements could focus on using the bikes as a daily commute to work, to create other use cases apart from leisure for the casual users. If there is an app used for bike rentals, it could also measure money spent on single ride or single day passes and compare the spending to the price of annual membership, to constantly notify the user if they annual pass is the more cost-friendly option for them.
